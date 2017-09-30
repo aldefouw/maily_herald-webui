@@ -14,7 +14,9 @@ module MailyHerald
         @inline_errors = options[:inline_errors] != false
         @help_scope = options[:help_scope]
 
-        if Rails::VERSION::MAJOR >= 4.2
+        if Rails::VERSION::MAJOR >= 5.0
+          super object_name, object, template, options
+        elsif Rails::VERSION::MAJOR >= 4.2
           super
         else
           super object_name, object, template, options
